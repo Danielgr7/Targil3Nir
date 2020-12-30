@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyKitchenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ingredients">
+          <Key>
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Name="IngredientId" Type="int" Nullable="false" />
+          <Property Name="IngName" Type="nvarchar" MaxLength="25" />
+          <Property Name="IngredientsImg" Type="varchar" MaxLength="250" />
+          <Property Name="Calories" Type="float" />
+        </EntityType>
+        <EntityType Name="ingredientsInRecipes">
+          <Key>
+            <PropertyRef Name="RecipeId" />
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Name="RecipeId" Type="int" Nullable="false" />
+          <Property Name="IngredientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recipes">
+          <Key>
+            <PropertyRef Name="RecipeId" />
+          </Key>
+          <Property Name="RecipeId" Type="int" Nullable="false" />
+          <Property Name="RecipeName" Type="nvarchar" MaxLength="25" />
+          <Property Name="RecImg" Type="varchar" MaxLength="250" />
+          <Property Name="CookingMethod" Type="nvarchar" MaxLength="30" />
+          <Property Name="CookTime" Type="float" />
+        </EntityType>
+        <Association Name="fk1">
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+          <End Role="ingredientsInRecipes" Type="Self.ingredientsInRecipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipes">
+              <PropertyRef Name="RecipeId" />
+            </Principal>
+            <Dependent Role="ingredientsInRecipes">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk2">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+          <End Role="ingredientsInRecipes" Type="Self.ingredientsInRecipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientId" />
+            </Principal>
+            <Dependent Role="ingredientsInRecipes">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyKitchenModelStoreContainer">
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ingredientsInRecipes" EntityType="Self.ingredientsInRecipes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk1" Association="Self.fk1">
+            <End Role="Recipes" EntitySet="Recipes" />
+            <End Role="ingredientsInRecipes" EntitySet="ingredientsInRecipes" />
+          </AssociationSet>
+          <AssociationSet Name="fk2" Association="Self.fk2">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="ingredientsInRecipes" EntitySet="ingredientsInRecipes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyKitchenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Name="IngredientId" Type="Int32" Nullable="false" />
+          <Property Name="IngName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="IngredientsImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Calories" Type="Double" />
+          <NavigationProperty Name="Recipes" Relationship="Self.ingredientsInRecipes" FromRole="Ingredients" ToRole="Recipes" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="RecipeId" />
+          </Key>
+          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+          <Property Name="RecipeName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="RecImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CookingMethod" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CookTime" Type="Double" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.ingredientsInRecipes" FromRole="Recipes" ToRole="Ingredients" />
+        </EntityType>
+        <Association Name="ingredientsInRecipes">
+          <End Role="Recipes" Type="Self.Recipe" Multiplicity="*" />
+          <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MyKitchenDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipe" />
+          <AssociationSet Name="ingredientsInRecipes" Association="Self.ingredientsInRecipes">
+            <End Role="Recipes" EntitySet="Recipes" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyKitchenModelStoreContainer" CdmEntityContainer="MyKitchenDBContext">
+          <EntitySetMapping Name="Ingredients">
+            <EntityTypeMapping TypeName="MyKitchenModel.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredients">
+                <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
+                <ScalarProperty Name="IngName" ColumnName="IngName" />
+                <ScalarProperty Name="IngredientsImg" ColumnName="IngredientsImg" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="MyKitchenModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipes">
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="RecImg" ColumnName="RecImg" />
+                <ScalarProperty Name="CookingMethod" ColumnName="CookingMethod" />
+                <ScalarProperty Name="CookTime" ColumnName="CookTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ingredientsInRecipes" TypeName="MyKitchenModel.ingredientsInRecipes" StoreEntitySet="ingredientsInRecipes">
+            <EndProperty Name="Recipes">
+              <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+            </EndProperty>
+            <EndProperty Name="Ingredients">
+              <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

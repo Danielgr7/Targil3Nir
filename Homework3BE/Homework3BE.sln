@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework3BE", "Homework3BE\Homework3BE.csproj", "{EE2E7708-EC6D-4ED6-B749-FC30152B7924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyKitchenDB", "MyKitchenDB\MyKitchenDB.csproj", "{EE79FF7C-8C4C-455B-8EBB-250F1384FDBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE2E7708-EC6D-4ED6-B749-FC30152B7924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2E7708-EC6D-4ED6-B749-FC30152B7924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2E7708-EC6D-4ED6-B749-FC30152B7924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2E7708-EC6D-4ED6-B749-FC30152B7924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE79FF7C-8C4C-455B-8EBB-250F1384FDBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE79FF7C-8C4C-455B-8EBB-250F1384FDBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE79FF7C-8C4C-455B-8EBB-250F1384FDBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE79FF7C-8C4C-455B-8EBB-250F1384FDBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FA6F41C-901C-48DA-9698-F1CC6D27E58A}
+	EndGlobalSection
+EndGlobal
