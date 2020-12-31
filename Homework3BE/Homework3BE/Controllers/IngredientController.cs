@@ -1,4 +1,5 @@
-﻿using MyKitchenDB.EF;
+﻿using Homework3BE.DTO;
+using MyKitchenDB.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,18 @@ namespace Homework3BE.Controllers
     public class IngredientController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public List<IngredientDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            MyKitchenDBContext db = new MyKitchenDBContext();
+            var ingredients = db.Ingredients.Select(i => new IngredientDTO()
+            {
+                IngredientId = i.IngredientId,
+                IngName = i.IngName,
+                IngredientsImg = i.IngredientsImg,
+                Calories = i.Calories
+            }).ToList();
+
+            return ingredients;
         }
 
         // GET api/<controller>/5
@@ -26,7 +36,6 @@ namespace Homework3BE.Controllers
         public void Post([FromBody]string value)
         {
             MyKitchenDBContext db = new MyKitchenDBContext();
-
             //IngredientId   , IngName , IngredientsImg, Calories   
         }
 

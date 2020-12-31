@@ -167,6 +167,7 @@
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DTO\IngredientDTO.cs" />
+    <Compile Include="DTO\IngredientsInRecipesDTO.cs" />
     <Compile Include="DTO\RecipeDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

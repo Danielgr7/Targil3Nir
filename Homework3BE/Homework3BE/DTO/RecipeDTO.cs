@@ -12,7 +12,7 @@ namespace Homework3BE.DTO
         public string RecipeName;
         public string RecImg;
         public string CookingMethod;
-        public double CookTime;
-        public List<Ingredient> ingredientsList;  
+        public double? CookTime;
+        public List<Ingredient> IngredientsList;  
     }
 }

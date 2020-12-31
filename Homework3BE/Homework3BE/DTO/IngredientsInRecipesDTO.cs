@@ -5,13 +5,9 @@ using System.Web;
 
 namespace Homework3BE.DTO
 {
-    public class IngredientDTO
+    public class IngredientsInRecipesDTO
     {
+        public int RecipeId;
         public int IngredientId;
-        public string IngName;
-        public string IngredientsImg;
-        public double? Calories;
-
-
     }
 }

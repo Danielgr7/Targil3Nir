@@ -1,4 +1,5 @@
-﻿using MyKitchenDB.EF;
+﻿using Homework3BE.DTO;
+using MyKitchenDB.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,26 @@ namespace Homework3BE.Controllers
     public class RecipeController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public List<RecipeDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            MyKitchenDBContext db = new MyKitchenDBContext();
+            var recipes = db.Recipes.Select(r => new RecipeDTO()
+            {
+                RecipeId = r.RecipeId,
+                RecipeName = r.RecipeName,
+                RecImg = r.RecImg,
+                CookingMethod = r.CookingMethod,
+                CookTime = r.CookTime,
+                //IngredientsList = r.Ingredients.Select(ir => new IngredientsInRecipesDTO()
+                //{
+                //    RecipeId = r.RecipeId,
+                //    IngredientId = ir.IngredientId
+                //})
+
+
+            }).ToList();
+            return recipes;
+
         }
 
         // GET api/<controller>/5
