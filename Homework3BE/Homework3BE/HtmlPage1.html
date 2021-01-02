@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <title></title>
+    <script>
+        $(document).ready(() => {
+
+            //    public int RecipeId;
+            //public string RecipeName;
+            //public string RecImg;
+            //public string CookingMethod;
+            //public double? CookTime;
+            //public IEnumerable<IngredientsInRecipesDTO> IngredientsList;  
+
+            //    public int RecipeId;
+            //public int IngredientId;
+            let clientData = [
+                {
+                    RecipeName: "chicken",
+                    CookTime: 30,
+                    IngredientsList: [
+                        { IngredientId: 2 },
+                        { IngredientId: 3 }
+                    ]
+                },
+                { RecipeName: "chicken", CookTime: 30 },
+                { RecipeName: "chicken", CookTime: 30 }
+            ];
+
+            $.ajax({
+                dataType: "json",			                   //סוג הנתונים שאנחנו מצפים לקבל מהשרת
+                url: "/api/Recipe",	                       //הכתובת לשרת ולפונקציה
+                contentType: "application/json",	    	   //סוג הנתונים שאנחנו שולחים לשרת
+                type: "Post",				                   //סוג הפעולה
+                data: JSON.stringify(clientData),		           //הנתונים עצמם שאנחנו שולחים
+                success: function (data) {
+
+
+
+
+                },	                                       //פונקציה  שתופעל לאחר הצלחה
+                error:
+                    function (err) {
+                        console.log(err)
+                    }               		                   //פונקציה שתופעל במקרה של שגיאה
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
