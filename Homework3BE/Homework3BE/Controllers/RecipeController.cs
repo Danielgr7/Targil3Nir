@@ -22,11 +22,11 @@ namespace Homework3BE.Controllers
                 RecImg = r.RecImg,
                 CookingMethod = r.CookingMethod,
                 CookTime = r.CookTime,
-                //IngredientsList = r.Ingredients.Select(ir => new IngredientsInRecipesDTO()
-                //{
-                //    RecipeId = r.RecipeId,
-                //    IngredientId = ir.IngredientId
-                //})
+                IngredientsList = r.Ingredients.Select(ir => new IngredientsInRecipesDTO()
+                {
+                    RecipeId = r.RecipeId,
+                    IngredientId = ir.IngredientId
+                })
 
 
             }).ToList();
@@ -41,7 +41,7 @@ namespace Homework3BE.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post(List<RecipeDTO> recipeDTO)
         {
             MyKitchenDBContext db = new MyKitchenDBContext();
             /*
