@@ -1,5 +1,6 @@
 
-const apiUrl = "http://localhost:55530/api/Recipe";
+export function FetchGetRecipes(){
+    const apiUrl = "http://localhost:55530/api/Recipe";
 
 
     fetch(apiUrl, {
@@ -24,4 +25,5 @@ const apiUrl = "http://localhost:55530/api/Recipe";
             (error) => {
                 console.log("err post=", error);
             });
+}       
 

@@ -26,9 +26,7 @@ namespace Homework3BE.Controllers
                 {
                     RecipeId = r.RecipeId,
                     IngredientId = ir.IngredientId
-                })
-
-
+                }).ToList()
             }).ToList();
             return recipes;
 
@@ -41,20 +39,37 @@ namespace Homework3BE.Controllers
         }
 
         // POST api/<controller>
-        public void Post(List<RecipeDTO> recipeDTO)
+        public IHttpActionResult Post([FromBody]RecipeDTO recipeDTO)
         {
             MyKitchenDBContext db = new MyKitchenDBContext();
-            /*
-            db.Recipe.Add(new Recipe(
-            RecipeFields...
-            RecipeId 
-            RecipeName
-            RecImg
-            CookingMethod
-            CookTime
-            ));
-             */
+
+            try
+            {
+                Recipe recipePush = new Recipe();
+                recipePush.RecipeName = recipeDTO.RecipeName;
+                recipePush.RecImg = recipeDTO.RecImg;
+                recipePush.CookingMethod = recipeDTO.CookingMethod;
+                recipePush.CookTime = recipeDTO.CookTime;
+                //Recipe recipePush = new Recipe()
+                //{
+                //    RecipeName = recipeDTO.RecipeName,
+                //    RecImg = recipeDTO.RecImg,
+                //    CookingMethod = recipeDTO.CookingMethod,
+                //    CookTime = recipeDTO.CookTime
+
+                //};
+                foreach (var item in recipeDTO.IngredientsList)
+                {
+                    recipePush.Ingredients.Add(db.Ingredients.Where(x => x.IngredientId == item.IngredientId).FirstOrDefault());
+                }
+                db.Recipes.Add(recipePush);
+                db.SaveChanges();
+
+                return Created(new Uri(Request.RequestUri.AbsoluteUri + recipeDTO.RecipeName), recipeDTO);
+            }
+            catch (Exception ex) { return Content(HttpStatusCode.BadRequest, ex); }
         }
+
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)

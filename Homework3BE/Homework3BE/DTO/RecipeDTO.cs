@@ -13,6 +13,6 @@ namespace Homework3BE.DTO
         public string RecImg;
         public string CookingMethod;
         public double? CookTime;
-        public IEnumerable<IngredientsInRecipesDTO> IngredientsList;  
+        public List<IngredientsInRecipesDTO> IngredientsList;  
     }
 }
