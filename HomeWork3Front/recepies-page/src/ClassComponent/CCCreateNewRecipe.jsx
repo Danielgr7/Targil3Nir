@@ -61,18 +61,22 @@ class FCCraeteNewRecipe extends Component {
 
 
     handleSubmit = (e) => {
-        debugger
+        // debugger
         console.log(this.state)
         if (this.state.name === '' || this.state.img === '' || this.state.method === '' || this.state.cookTime === '' || this.state.ingredientsInRe.length == 0) {
             alert("some values are missing, please fill the entire form.");
         }
         else {
+            let ingredientList_ID = this.state.ingredientsInRe.map(ing => {
+                return {IngredientId: ing.id}
+            });
+            
             let data = {
                 RecipeName: this.state.name,
                 RecImg: this.state.img,
                 CookingMethod: this.state.method,
                 CookTime: parseFloat(this.state.cookTime),
-                IngredientsList: this.state.ingredientsInRe
+                IngredientsList: ingredientList_ID
             };
             console.log("this is the data", data);
 
