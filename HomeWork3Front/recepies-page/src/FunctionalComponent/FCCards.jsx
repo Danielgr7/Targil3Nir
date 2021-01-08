@@ -1,20 +1,39 @@
 import React from 'react'
 import FCRecipeCard from './FCRecipeCard'
+import { makeStyles } from '@material-ui/core/styles';
 
-export default function FCCards(props) {
-    let Cards = props.recipes.map((recipe,index) =>
-        <FCRecipeCard recipe={recipe} key={index}/>);
-        /*recipeIngredients={FilterIngredients(recipe)}*/
+
+
+const useStyles = makeStyles({
+    div_RacipeCard: {
+        //width:"500px",
+        display: "flex",
+        flexFlow: "row",
+        gap:"20px",
+        justifyContent: "center",
+        //border: '2px solid #000'
+
+
 
         
-        // function FilterIngredients(recipe) {
-        //     //let recipeIngredients = props.ingredients.filter(r => r.indId != recipe.ingredients.map(i => console.log(i.ingId)));
-        //     //let recipeIngredients2 = [];
-            
-        //     return recipeIngredients; 
-        // }
+         
+    }
+});
+
+
+
+export default function FCCards(props) {
+    const classes = useStyles();
+    console.dir(props.ingredients)
+    console.dir(props.recipes)
+
+    let Cards = props.recipes.map((recipe, index) => {
+        let ingredientRecipe = props.ingredients.filter(ingredient => recipe.IngredientsList.includes(ingredient.IngredientId));
+        return <FCRecipeCard recipe={recipe} key={index} ingredients={ingredientRecipe} />
+    });
+
     return (
-        <div>
+        <div className={classes.div_RacipeCard}>
             {Cards}
         </div>
     )

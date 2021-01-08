@@ -33,11 +33,37 @@ namespace Homework3BE.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]IngredientDTO ing)
         {
-            MyKitchenDBContext db = new MyKitchenDBContext();
-            //IngredientId   , IngName , IngredientsImg, Calories   
+            try
+            {
+                MyKitchenDBContext db = new MyKitchenDBContext();
+                Ingredient ingredientsPush = new Ingredient()
+                {
+                    //IngredientId = i.IngredientId,  -- maybe we need it?
+                    IngName = ing.IngName,
+                    IngredientsImg = ing.IngredientsImg,
+                    Calories = ing.Calories
+                };
+                db.Ingredients.Add(ingredientsPush);
+                db.SaveChanges();
+
+                return Created(new Uri(Request.RequestUri.AbsoluteUri + ing.IngName), ing);
+            }
+            catch (Exception ex) { return Content(HttpStatusCode.BadRequest, ex); }
         }
+
+
+
+        //Maybe  ====  ====  Post([FromBody]Ingredient ing)
+
+        //db.Ingredients.Add(ing);
+        //db.SaveChanges();
+
+        //IngredientDTO newIng = new IngredientDTO(ing.IngName, ing.IngName, ing.IngName);
+
+
+
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)

@@ -1,0 +1,23 @@
+    .root {
+        display: flex;
+        justify-content:center;
+    }
+
+    .form {
+        gap: "30px";
+    }
+
+    .btnSubmit {
+        text-Align: "center";
+        padding: "2px";
+        background-color: rgb(65, 172, 4);
+        gap: "30px";
+        padding: "5px";
+
+    }
+    .btnClear{
+        background-color: rgb(250, 31, 78);
+        gap: "30px";
+    }
+    
+    

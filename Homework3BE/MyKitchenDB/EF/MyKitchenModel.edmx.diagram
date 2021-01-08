@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b73b894338904c54898974b1f42ad4ba" Name="Diagram1">
-        <EntityTypeShape EntityType="MyKitchenModel.Ingredient" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyKitchenModel.Recipe" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyKitchenModel.Ingredient" Width="1.5" PointX="6.875" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyKitchenModel.Recipe" Width="1.5" PointX="2.625" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="MyKitchenModel.ingredientsInRecipes" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
