@@ -25,7 +25,7 @@ class FCCreateNewIngredient extends Component {
       alert("missing some values, please fill the entire form.");
     }
     else {
-
+      debugger
       console.log(this.state);
       let data = {
         "IngName": this.state.name,
@@ -33,7 +33,7 @@ class FCCreateNewIngredient extends Component {
         "Calories": parseFloat(this.state.calories)
       };
       console.log("data------>", data);
-      alert("stop.");
+      //alert("stop.");
 
       const apiUrl = "http://localhost:55530/api/Ingredient";
       fetch(apiUrl, {
@@ -55,7 +55,7 @@ class FCCreateNewIngredient extends Component {
       console.log('end');
     }
   }
-  
+
 
   render() {
     return (

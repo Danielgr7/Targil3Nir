@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\bacha\Desktop\Targil3Nir\Homework3BE\MyKitchenDB\EF\MyKitchenModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\bacha\Desktop\Targil3Nir\Homework3BE\MyKitchenDB\EF_NEW\MyKitchenNEWModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

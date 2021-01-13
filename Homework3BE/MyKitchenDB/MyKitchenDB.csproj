@@ -50,55 +50,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\Ingredient.cs">
-      <DependentUpon>MyKitchenModel.tt</DependentUpon>
+    <Compile Include="EF_NEW\Ingredient.cs">
+      <DependentUpon>MyKitchenNEWModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\MyKitchenModel.Context.cs">
+    <Compile Include="EF_NEW\MyKitchenNEWModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyKitchenModel.Context.tt</DependentUpon>
+      <DependentUpon>MyKitchenNEWModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\MyKitchenModel.cs">
+    <Compile Include="EF_NEW\MyKitchenNEWModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyKitchenModel.tt</DependentUpon>
+      <DependentUpon>MyKitchenNEWModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\MyKitchenModel.Designer.cs">
+    <Compile Include="EF_NEW\MyKitchenNEWModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyKitchenModel.edmx</DependentUpon>
+      <DependentUpon>MyKitchenNEWModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EF\Recipe.cs">
-      <DependentUpon>MyKitchenModel.tt</DependentUpon>
+    <Compile Include="EF_NEW\Recipe.cs">
+      <DependentUpon>MyKitchenNEWModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Extension\Ingredient.cs" />
-    <Compile Include="Extension\Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EntityDeploy Include="EF\MyKitchenModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyKitchenModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="EF\MyKitchenModel.edmx.diagram">
-      <DependentUpon>MyKitchenModel.edmx</DependentUpon>
+    <EntityDeploy Include="EF_NEW\MyKitchenNEWModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyKitchenNEWModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF_NEW\MyKitchenNEWModel.edmx.diagram">
+      <DependentUpon>MyKitchenNEWModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EF\MyKitchenModel.Context.tt">
+    <Content Include="EF_NEW\MyKitchenNEWModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MyKitchenModel.Context.cs</LastGenOutput>
-      <DependentUpon>MyKitchenModel.edmx</DependentUpon>
+      <DependentUpon>MyKitchenNEWModel.edmx</DependentUpon>
+      <LastGenOutput>MyKitchenNEWModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EF\MyKitchenModel.tt">
+    <Content Include="EF_NEW\MyKitchenNEWModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyKitchenModel.edmx</DependentUpon>
-      <LastGenOutput>MyKitchenModel.cs</LastGenOutput>
+      <DependentUpon>MyKitchenNEWModel.edmx</DependentUpon>
+      <LastGenOutput>MyKitchenNEWModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
