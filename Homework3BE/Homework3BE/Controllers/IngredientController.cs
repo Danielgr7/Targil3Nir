@@ -1,5 +1,5 @@
 ﻿using Homework3BE.DTO;
-using MyKitchenDB.EF;
+using MyKitchenDB.EF_NEW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace Homework3BE.Controllers
         // GET api/<controller>
         public List<IngredientDTO> Get()
         {
-            MyKitchenDBContext db = new MyKitchenDBContext();
+            MyKitchen_NEWContext db = new MyKitchen_NEWContext();
             var ingredients = db.Ingredients.Select(i => new IngredientDTO()
             {
                 IngredientId = i.IngredientId,
@@ -37,7 +37,7 @@ namespace Homework3BE.Controllers
         {
             try
             {
-                MyKitchenDBContext db = new MyKitchenDBContext();
+                MyKitchen_NEWContext db = new MyKitchen_NEWContext();
                 Ingredient ingredientsPush = new Ingredient()
                 {
                     //IngredientId = i.IngredientId,  -- maybe we need it?

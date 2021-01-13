@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MyKitchenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="bgroup13_test1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ingredients">
           <Key>
             <PropertyRef Name="IngredientId" />
@@ -56,7 +56,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MyKitchenModelStoreContainer">
+        <EntityContainer Name="bgroup13_test1ModelStoreContainer">
           <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ingredientsInRecipes" EntityType="Self.ingredientsInRecipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
@@ -72,12 +72,12 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MyKitchenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="bgroup13_test1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="IngredientId" />
           </Key>
-          <Property Name="IngredientId" Type="Int32" Nullable="false" />
+          <Property Name="IngredientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IngName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="IngredientsImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Calories" Type="Double" />
@@ -87,7 +87,7 @@
           <Key>
             <PropertyRef Name="RecipeId" />
           </Key>
-          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+          <Property Name="RecipeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecipeName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="RecImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CookingMethod" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -98,7 +98,7 @@
           <End Role="Recipes" Type="Self.Recipe" Multiplicity="*" />
           <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="MyKitchenDBContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MyKitchen_NEWContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
           <EntitySet Name="Recipes" EntityType="Self.Recipe" />
           <AssociationSet Name="ingredientsInRecipes" Association="Self.ingredientsInRecipes">
@@ -111,9 +111,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MyKitchenModelStoreContainer" CdmEntityContainer="MyKitchenDBContext">
+        <EntityContainerMapping StorageEntityContainer="bgroup13_test1ModelStoreContainer" CdmEntityContainer="MyKitchen_NEWContext">
           <EntitySetMapping Name="Ingredients">
-            <EntityTypeMapping TypeName="MyKitchenModel.Ingredient">
+            <EntityTypeMapping TypeName="bgroup13_test1Model.Ingredient">
               <MappingFragment StoreEntitySet="Ingredients">
                 <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
                 <ScalarProperty Name="IngName" ColumnName="IngName" />
@@ -123,7 +123,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipes">
-            <EntityTypeMapping TypeName="MyKitchenModel.Recipe">
+            <EntityTypeMapping TypeName="bgroup13_test1Model.Recipe">
               <MappingFragment StoreEntitySet="Recipes">
                 <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
                 <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
@@ -133,7 +133,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ingredientsInRecipes" TypeName="MyKitchenModel.ingredientsInRecipes" StoreEntitySet="ingredientsInRecipes">
+          <AssociationSetMapping Name="ingredientsInRecipes" TypeName="bgroup13_test1Model.ingredientsInRecipes" StoreEntitySet="ingredientsInRecipes">
             <EndProperty Name="Recipes">
               <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
             </EndProperty>

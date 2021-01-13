@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyKitchenDB.EF
+namespace MyKitchenDB.EF_NEW
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MyKitchenDBContext : DbContext
+    public partial class MyKitchen_NEWContext : DbContext
     {
-        public MyKitchenDBContext()
-            : base("name=MyKitchenDBContext")
+        public MyKitchen_NEWContext()
+            : base("name=MyKitchen_NEWContext")
         {
         }
     

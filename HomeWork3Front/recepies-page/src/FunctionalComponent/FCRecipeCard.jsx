@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     media: {
         height: 140,
         //width:150
+        width: "300px"
     },
     button: {
         textAlign: "center",

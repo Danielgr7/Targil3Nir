@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyKitchenDB.EF
+namespace MyKitchenDB.EF_NEW
 {
     using System;
     using System.Collections.Generic;

@@ -61,7 +61,7 @@ class FCCraeteNewRecipe extends Component {
 
 
     handleSubmit = (e) => {
-        // debugger
+        debugger
         console.log(this.state)
         if (this.state.name === '' || this.state.img === '' || this.state.method === '' || this.state.cookTime === '' || this.state.ingredientsInRe.length == 0) {
             alert("some values are missing, please fill the entire form.");
